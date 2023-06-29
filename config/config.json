@@ -15,9 +15,9 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
+    "username": "backendwebli",
+    "password": "f7MIJ9utbyUz2oBM",
+    "database": "backendwebli",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
