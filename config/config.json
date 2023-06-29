@@ -16,7 +16,7 @@
   },
   "production": {
     "username": "backendwebli",
-    "password": "f7MIJ9utbyUz2oBM",
+    "password": "vPaaO6i6htLizCo1",
     "database": "backendwebli",
     "host": "127.0.0.1",
     "dialect": "mysql"
