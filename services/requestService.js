@@ -3,7 +3,6 @@ import db from "../models/index";
 import sequelize, { Op } from "sequelize";
 import fs from 'fs';
 import dotenv from "dotenv";
-import us from 'microtime';
 import * as Constants from '../config/constants/Constants';
 
 dotenv.config();
