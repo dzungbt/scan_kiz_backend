@@ -154,8 +154,8 @@ let updateProduct = async (data) => {
             let productUpdate = await db.Product.update({
                 name: data.name,
                 categoryId: JSON.parse(data.categoryId),
-                wholeSalePrice: JSON.parse(data.wholeSalePrice),
-                price: JSON.parse(data.price),
+                wholeSalePrice: Number(data.wholeSalePrice),
+                price: Number(data.price),
                 des: data.des,
                 note: data.note
             }, {
