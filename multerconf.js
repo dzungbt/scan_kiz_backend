@@ -1,6 +1,5 @@
 import multer from 'multer';
 import mime from 'mime';
-import us from 'microtime';
 
 module.exports.uploads = function (dir) {
     const storage = multer.diskStorage({
@@ -9,7 +8,7 @@ module.exports.uploads = function (dir) {
         },
         filename: (req, file, cb) => {
             // const extension = mime.getExtension(file.mimetype);
-            const filename = `${file.fieldname}-${us.now()}.jpg`;
+            const filename = `${file.fieldname}-${new Date().getTime()}.jpg`;
             cb(null, filename);
         },
     });
@@ -23,7 +22,7 @@ module.exports.uploadsExcel = function (dir) {
         },
         filename: (req, file, cb) => {
             // const extension = mime.getExtension(file.mimetype);
-            const filename = `BG${us.now()}.xlsx`;
+            const filename = `BG${new Date().getTime()}.xlsx`;
             cb(null, filename);
         },
     });

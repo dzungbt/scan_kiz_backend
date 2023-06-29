@@ -25,7 +25,7 @@ let createRequest = async (data) => {
                 name: data.name,
                 email: data.email,
                 des: data.des,
-                requestCode: 'BGCODE' + us.now(),
+                requestCode: 'BGCODE' + new Date().getTime(),
                 status: Constants.REQUEST_STATUS_CREATED,
             }, { transaction: t });
             for (const file of data.listFiles) {
