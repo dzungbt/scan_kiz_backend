@@ -11,16 +11,6 @@ module.exports = {
       },
       requestId: {
         type: Sequelize.DataTypes.INTEGER,
-        references: {
-          model: {
-            tableName: 'requests',
-          },
-          key: 'id',
-          onDelete: 'cascade'
-
-        },
-        allowNull: false,
-        // references: { model: 'requests', key: 'id', onDelete: 'cascade' }
       },
       filePath: {
         type: Sequelize.TEXT

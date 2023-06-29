@@ -17,15 +17,6 @@ module.exports = {
       },
       productId: {
         type: Sequelize.DataTypes.INTEGER,
-        references: {
-          model: {
-            tableName: 'products',
-          },
-          key: 'id',
-          onDelete: 'cascade'
-
-        },
-        allowNull: false,
       },
       createdAt: {
         allowNull: false,

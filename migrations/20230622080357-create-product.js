@@ -14,14 +14,6 @@ module.exports = {
       },
       categoryId: {
         type: Sequelize.DataTypes.INTEGER,
-        references: {
-          model: {
-            tableName: 'Product_Categories',
-          },
-          key: 'id',
-          onDelete: 'cascade'
-        },
-        allowNull: false,
       },
       price: {
         type: Sequelize.DataTypes.BIGINT
