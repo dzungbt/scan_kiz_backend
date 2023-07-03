@@ -22,6 +22,7 @@ app.use(cors({
 
 app.use('/product-images', express.static('uploads/products'));
 app.use('/request-files', express.static('uploads/requests'));
+app.use('/category-logo', express.static('uploads/categoryLogos'));
 
 // app.use(cors({ origin: true }));
 // Add headers before the routes are defined

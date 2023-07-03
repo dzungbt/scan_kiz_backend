@@ -3,7 +3,9 @@ const Joi = require("joi");
 const createProductCateValidate = (method) => {
     const schema = Joi.object({
         name: Joi.string().required(),
-        pid: Joi.number().allow(null),
+        pid: Joi.string().allow(''),
+        listFile: Joi.array(),
+
     });
     return schema.validate(method);
 }
@@ -11,8 +13,10 @@ const createProductCateValidate = (method) => {
 const updateProductCateValidate = (method) => {
     const schema = Joi.object({
         name: Joi.string().required(),
-        pid: Joi.number().allow(null),
-        id: Joi.number().required(),
+        pid: Joi.string().allow('null'),
+        id: Joi.string().required(),
+        listFile: Joi.array(),
+        fileKept: Joi.any(),
     });
     return schema.validate(method);
 }

@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Product_Categories.init({
     name: DataTypes.STRING,
-    pid: DataTypes.INTEGER
+    pid: DataTypes.INTEGER,
+    logoPath: DataTypes.TEXT,
   }, {
     sequelize,
     modelName: 'Product_Categories',

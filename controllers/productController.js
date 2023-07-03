@@ -9,12 +9,13 @@ import validateProductsData from "../middleware/validateProductsData";
 let createNewCategory = async (req, res) => {
     let name = req.body.name;
     let pid = req.body.pid;
+    let listFile = req.files;
+
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
-    console.log('check : ', name, ' - ', pid);
+    // console.log('check : ', name, ' - ', pid);
     const errors = validateProductsData.createProductCateValidate(req.body).error;
-    console.log('check error : ', JSON.stringify(errors));
-
+    // console.log('check error : ', JSON.stringify(errors));
     if (errors) {
         return res.status(500).json({
             errCode: 1,
@@ -29,7 +30,8 @@ let createNewCategory = async (req, res) => {
 
     let data = await ProductService.createProductCategory({
         name: name,
-        pid: pid
+        pid: pid,
+        listFile: listFile,
     })
 
     res.setHeader('Authorization', `Bearer ${token}`);
@@ -45,11 +47,14 @@ let updateCategory = async (req, res) => {
     let name = req.body.name;
     let pid = req.body.pid;
     let id = req.body.id;
+    let listFile = req.files;
+    let fileKept = req.body.fileKept;
+
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
 
     let errors = validateProductsData.updateProductCateValidate(req.body).error;
-    console.log(errors);
+    // console.log(errors);
     if (errors) {
         return res.status(500).json({
             errCode: 1,
@@ -63,7 +68,9 @@ let updateCategory = async (req, res) => {
     let data = await ProductService.updateProductCategory({
         name: name,
         pid: pid,
-        id: id
+        id: id,
+        listFile: listFile,
+        fileKept: fileKept,
     })
 
     res.setHeader('Authorization', `Bearer ${token}`);
@@ -103,7 +110,7 @@ let createNewProduct = async (req, res) => {
     let des = req.body.des;
     let note = req.body.note;
     let listFiles = req.files;
-    console.log('controller check files : ', req.body);
+    // console.log('controller check files : ', req.body);
 
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
@@ -156,7 +163,7 @@ let updateProduct = async (req, res) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
     const errors = validateProductsData.updateProductValidate(req.body).error;
-    console.log('check updateProduct : ', JSON.stringify(errors));
+    // console.log('check updateProduct : ', JSON.stringify(errors));
     if (errors) {
         return res.status(500).json({
             errCode: 1,
@@ -221,7 +228,7 @@ let getAllProducts = async (req, res) => {
 
 let getAllCategories = async (req, res) => {
     let data = await ProductService.getAllCategories();
-    console.log(data);
+    // console.log(data);
     return res.status(200).json({
         errCode: data.errCode,
         message: data.message,
@@ -231,7 +238,7 @@ let getAllCategories = async (req, res) => {
 
 
 let getAllProductsPagination = async (req, res) => {
-    console.log(req.query.categoryId);
+    // console.log(req.query.categoryId);
     let page = req.query.page;
     let categoryId = req.query.categoryId;
     let data = await ProductService.getProductsPagination({

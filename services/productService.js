@@ -14,9 +14,11 @@ let createProductCategory = async (data) => {
     return new Promise(async (resolve, reject) => {
         try {
             let dataResponse = {};
+            // console.log(data.listFile[0]);
             let newCate = await db.Product_Categories.create({
                 name: data.name,
-                pid: data.pid,
+                pid: JSON.parse(data.pid),
+                logoPath: data.listFile[0] ? '/category-logo/' + data.listFile[0].filename : '',
             });
 
             if (newCate) {
@@ -38,6 +40,7 @@ let createProductCategory = async (data) => {
 let updateProductCategory = async (data) => {
     return new Promise(async (resolve, reject) => {
         try {
+            console.log(data);
 
             let dataResponse = {};
             if (data.pid == data.id) {
@@ -46,12 +49,25 @@ let updateProductCategory = async (data) => {
                 resolve(dataResponse);
 
             }
-            let productCategory = await db.Product_Categories.update({
-                name: data.name,
-                pid: data.pid,
-            }, {
-                where: { id: data.id }
-            });
+            // let logoPathOption = data.fileKept ? '' : { logoPath: data.listFile[0] ? '/category-logo/' + data.listFile[0].filename : '' };
+            let productCategory = false;
+            if (!JSON.parse(data.fileKept)) {
+                productCategory = await db.Product_Categories.update({
+                    name: data.name,
+                    pid: JSON.parse(data.pid),
+                    logoPath: data.listFile[0] ? '/category-logo/' + data.listFile[0].filename : '',
+                }, {
+                    where: { id: data.id }
+                });
+            } else {
+                productCategory = await db.Product_Categories.update({
+                    name: data.name,
+                    pid: JSON.parse(data.pid),
+                }, {
+                    where: { id: data.id }
+                });
+            }
+
             let cateAfterUpdate = await db.Product_Categories.findByPk(data.id);
             if (productCategory) {
                 dataResponse.errCode = 0;
@@ -266,7 +282,7 @@ let getAllCategories = async (data) => {
                 // order: [['updatedAt', 'DESC'],]
 
             });
-            console.log(allCategories);
+            // console.log(allCategories);
             dataResponse.errCode = 0;
             dataResponse.data = allCategories;
 

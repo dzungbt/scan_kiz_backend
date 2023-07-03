@@ -29,5 +29,19 @@ module.exports.uploadsExcel = function (dir) {
     return multer({ storage: storage });
 };
 
+module.exports.uploadsCategoryLogo = function (dir) {
+    const storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, `uploads/${dir}`);
+        },
+        filename: (req, file, cb) => {
+            // const extension = mime.getExtension(file.mimetype);
+            const filename = `CL${new Date().getTime()}.jpg`;
+            cb(null, filename);
+        },
+    });
+    return multer({ storage: storage });
+};
+
 
 
