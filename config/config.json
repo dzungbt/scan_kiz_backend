@@ -8,9 +8,9 @@
     "timezone": "+07:00"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
+    "username": "backendwebli",
+    "password": "vPaaO6i6htLizCo1",
+    "database": "backendwebli",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

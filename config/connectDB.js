@@ -1,15 +1,18 @@
 const { Sequelize } = require('sequelize');
-
+require('dotenv').config()
+const env = process.env.NODE_ENV || "development";
+const config = require('./config.json')[env];
 
 // Option 3: Passing parameters separately (other dialects)
-const sequelize = new Sequelize('learn_node', 'root', null, {
-    host: 'localhost',
-    dialect: 'mysql',
-    logging : false,
+const sequelize = new Sequelize(config["database"], config["username"], config["password"], {
+    host: config["host"],
+    dialect: config["dialect"],
+    timezone: config["timezone"],
+    logging: false,
 });
 
 
-const connectDB = async ()=>{
+const connectDB = async () => {
     try {
         await sequelize.authenticate();
         console.log('Connection has been established successfully.');
