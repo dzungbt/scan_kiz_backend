@@ -13,9 +13,8 @@ let createNewCategory = async (req, res) => {
 
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
-    // console.log('check : ', name, ' - ', pid);
+
     const errors = validateProductsData.createProductCateValidate(req.body).error;
-    // console.log('check error : ', JSON.stringify(errors));
     if (errors) {
         return res.status(500).json({
             errCode: 1,
