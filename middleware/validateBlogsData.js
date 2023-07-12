@@ -8,12 +8,18 @@ const createBlogValidate = (method) => {
     return schema.validate(method);
 }
 
-
+const updateBlogValidate = (method) => {
+    const schema = Joi.object({
+        blogId: Joi.string().required(),
+        content: Joi.string().required(),
+    });
+    return schema.validate(method);
+}
 
 
 
 
 module.exports = {
     createBlogValidate: createBlogValidate,
-
+    updateBlogValidate: updateBlogValidate,
 }

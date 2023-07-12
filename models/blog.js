@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   blog.init({
     title: DataTypes.TEXT,
+    routeSlug: DataTypes.TEXT,
     content: DataTypes.TEXT
   }, {
     sequelize,

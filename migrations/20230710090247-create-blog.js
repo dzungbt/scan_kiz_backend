@@ -12,6 +12,9 @@ module.exports = {
       title: {
         type: Sequelize.TEXT
       },
+      routeSlug: {
+        type: Sequelize.TEXT
+      },
       content: {
         type: Sequelize.TEXT('long')
       },
