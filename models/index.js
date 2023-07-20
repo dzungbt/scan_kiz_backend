@@ -55,7 +55,8 @@ const {
     Task,
     Project,
     request,
-    request_file
+    request_file,
+    user
 } = db;
 
 Product_Categories.hasMany(Product, {
@@ -91,5 +92,12 @@ request_file.belongsTo(request, {
     foreignKey: 'requestId',
 });
 
+user.hasMany(request, {
+    foreignKey: 'userId',
+})
+
+request.belongsTo(user, {
+    foreignKey: 'userId',
+})
 
 module.exports = db;

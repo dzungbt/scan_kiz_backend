@@ -110,6 +110,9 @@ const requestConfirm = (userData) => {
                 <a class = "mail-inner-access-btn" href="#">Truy cập trang web của chúng tôi</a>
               </div>
             </div>
+            <div class="mail-inner-row">
+              <p class = "mail-inner-main-text">${userData.accountString}</p>
+            </div>
             <hr>
             <div class="mail-inner-row">
               <p>Xin cảm ơn,</p>

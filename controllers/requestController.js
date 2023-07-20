@@ -1,7 +1,3 @@
-const {
-    Product,
-    Product_Categories
-} = require("../models");
 import RequestService from '../services/requestService';
 import AuthMiddleware from '../middleware/auth'
 import validateRequestData from "../middleware/validateRequestData";
@@ -36,6 +32,7 @@ let createNewRequest = async (req, res) => {
         name: data.request.name,
         requestCode: data.request.requestCode,
         attachments: data.filesSaving,
+        accountString: data.emailString,
     })
     return res.status(200).json({
         errCode: data.errCode,
