@@ -56,7 +56,8 @@ const {
     Project,
     request,
     request_file,
-    user
+    user,
+    File
 } = db;
 
 Product_Categories.hasMany(Product, {

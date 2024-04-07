@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import viewEngine from "./config/viewEngine";
 import initWebRoutes from "./route/web";
 import dotenv from "dotenv";
-import connectDB from "./config/connectDB";
+// import connectDB from "./config/connectDB";
 // import expressValidator from 'express-validator';
 
 import cors from 'cors';
@@ -51,7 +51,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 viewEngine(app);
 initWebRoutes(app);
-connectDB();
+// connectDB();
 
 let port = process.env.PORT || 3005;
 app.listen(port, () => {
