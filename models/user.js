@@ -1,4 +1,5 @@
 'use strict';
+import * as Constants from '../config/constants/Constants';
 const {
     Model
 } = require('sequelize');
@@ -14,9 +15,12 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     user.init({
+        name: DataTypes.STRING,
         email: DataTypes.STRING,
         password: DataTypes.STRING,
-        active: DataTypes.INTEGER,
+        role: DataTypes.ENUM(...Constants.SYSTEM_ROLE_ARR),
+        status: DataTypes.ENUM(...Constants.SYSTEM_STATUS_ARR),
+        expireDate: DataTypes.DATE
     }, {
         sequelize,
         modelName: 'user',

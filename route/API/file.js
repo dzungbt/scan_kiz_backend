@@ -1,6 +1,4 @@
 import express from "express";
-import { uploads, uploadsExcel } from "../../multerconf";
-import SendMail from '../../utils/mail/sendMail';
 const router = express.Router({ mergeParams: true });
 router.use(express.json());
 import FileController from "../../controllers/fileController";

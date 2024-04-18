@@ -5,11 +5,11 @@ const createToken = (payload) => {
     let key = process.env.JWT_SECRET;
     let token = null;
     try {
-        token = jwt.sign(payload, key);
-        console.log('token : ', token);
+        token = jwt.sign(payload, key, {
+            expiresIn: 60 * 60 * 24 * 30
+        });
 
     } catch (err) {
-        console.log('error : ', err);
     }
 
     return token;
@@ -19,10 +19,8 @@ const verifyToken = (token) => {
     let data = null;
     return jwt.verify(token, process.env.JWT_SECRET, function (err, decoded) {
         if (err) {
-            console.log('err : ', err);
             return data;
         }
-        console.log('decoded : ', decoded);
 
         return decoded;
 

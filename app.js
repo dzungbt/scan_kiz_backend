@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import viewEngine from "./config/viewEngine";
 import initWebRoutes from "./route/web";
 import dotenv from "dotenv";
+import cronJobs from './job/cronjob'
 // import connectDB from "./config/connectDB";
 // import expressValidator from 'express-validator';
 
@@ -23,7 +24,7 @@ app.use(cors({
 app.use('/product-images', express.static('uploads/products'));
 app.use('/request-files', express.static('uploads/requests'));
 app.use('/category-logo', express.static('uploads/categoryLogos'));
-
+cronJobs();
 // app.use(cors({ origin: true }));
 // Add headers before the routes are defined
 // app.use(function (req, res, next) {

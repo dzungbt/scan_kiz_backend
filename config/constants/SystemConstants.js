@@ -10,3 +10,24 @@ export const REQUEST_STATUS_ARR = [REQUEST_STATUS_CREATED,
     REQUEST_STATUS_DONE
 ];
 
+export const SYSTEM_ROLE = {
+    ADMIN: 'admin',
+    USER: 'user'
+};
+
+export const SYSTEM_ROLE_ARR = [
+    SYSTEM_ROLE.ADMIN,
+    SYSTEM_ROLE.USER,
+];
+
+export const SYSTEM_STATUS = {
+    ACTIVE: 'active',
+    BLOCKED: 'blocked'
+};
+
+export const SYSTEM_STATUS_ARR = [
+    SYSTEM_STATUS.ACTIVE,
+    SYSTEM_STATUS.BLOCKED,
+];
+
+

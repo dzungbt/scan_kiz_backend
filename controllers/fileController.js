@@ -9,6 +9,7 @@ let createFile = async (req, res) => {
     const errors = ValidateFileData.productsImportValidate(products).error;
     if (errors) {
         return res.status(200).json({
+            status: 200,
             errCode: 1,
             message: 'Parameters input are not met requirements',
         });
@@ -26,6 +27,7 @@ let getFile = async (req, res) => {
     let fileId = req.params.id;
     if (isNaN(Number(fileId))) {
         return res.status(200).json({
+            status: 200,
             errCode: 1,
             message: 'file id is invalid',
             data,
@@ -36,6 +38,7 @@ let getFile = async (req, res) => {
     })
 
     return res.status(200).json({
+        status: 200,
         errCode: data.errCode,
         message: data.message,
         data,
@@ -46,6 +49,7 @@ let updateFile = async (req, res) => {
     let fileId = req.body.id;
     if (isNaN(Number(fileId))) {
         return res.status(200).json({
+            status: 200,
             errCode: 1,
             message: 'file id is invalid',
             data,
@@ -64,6 +68,7 @@ let updateFile = async (req, res) => {
         products
     })
     return res.status(200).json({
+        status: 200,
         errCode: data.errCode,
         message: data.message,
         data,

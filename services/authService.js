@@ -1,6 +1,7 @@
 import db from "../models/index";
 import fs from 'fs';
 import dotenv from "dotenv";
+import * as Constants from '../config/constants/Constants'
 dotenv.config();
 
 let userLogin = async (data) => {
@@ -11,8 +12,6 @@ let userLogin = async (data) => {
                 where: { email: data.email }
             });
 
-            console.log('check user : ', user);
-
             if (!user) {
                 dataResponse.errCode = 2;
                 dataResponse.message = 'Wrong email';
@@ -21,14 +20,21 @@ let userLogin = async (data) => {
                 if (data.password == user.password) {
                     const userData = await db.user.findOne({
                         where: { email: data.email },
-                        attributes: ['email', 'id', 'password'],
+                        attributes: ['email', 'id', 'password', 'name', 'expireDate', 'role', 'status'],
                     })
-                    dataResponse.errCode = 0;
-                    dataResponse.user = userData;
-                    dataResponse.message = 'Create complete';
+
+                    if (userData.role == Constants.SYSTEM_ROLE.USER && userData.status == Constants.SYSTEM_STATUS.BLOCKED ) {
+                        dataResponse.errCode = 4;
+                        dataResponse.message = 'Tài khoản đã bị khóa';
+                    } else {
+                        dataResponse.errCode = 0;
+                        dataResponse.user = userData;
+                        dataResponse.message = '';
+                    }
+
                 } else {
                     dataResponse.errCode = 3;
-                    dataResponse.message = 'Can not create';
+                    dataResponse.message = '';
                 }
             }
             resolve(dataResponse);
