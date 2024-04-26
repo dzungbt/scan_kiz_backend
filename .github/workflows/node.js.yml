@@ -50,6 +50,7 @@ jobs:
       uses: geekyeggo/delete-artifact@v5
       with:
         name: config-file
+        
     - name: Create .env file
       run: echo "NODE_ENV=production" > .env
     - name: Update port .env
