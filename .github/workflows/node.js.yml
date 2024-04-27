@@ -65,6 +65,7 @@ jobs:
       run: npm install pm2 -g
     - name: Stop application if running
       run: npx pm2 delete "kiz-scan-back" || true
+
     - name: Start application with pm2
       run: npx pm2 start npm --name "kiz-scan-back" -- run start
     # - name: Copy example config to config.json
