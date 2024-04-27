@@ -65,6 +65,9 @@ jobs:
       run: npm install pm2 -g
     - name: Install nodemon
       run: npm install -g nodemon
+    - name: Install Babel and related dependencies
+      run: |
+        npm install --save-dev @babel/core @babel/node @babel/preset-env
     - name: Stop application if running
       run: npx pm2 delete "kiz-scan-back" || true
     - name: Start application with pm2
