@@ -56,10 +56,10 @@ jobs:
       run: echo "PORT=3010" >> .env
     - name: Update port .env
       run: echo "JWT_SECRET=${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}" >> .env
-    - name: Migrate to database
-      run: npx sequelize-cli db:migrate --env=production
     - run: npm ci
     - run: npm i
+    - name: Migrate to database
+      run: npx sequelize-cli db:migrate --env=production
     - run: npm run build --if-present
     # - name: Copy example config to config.json
     #   run: cp ./config/.example.config ./config/config.json
