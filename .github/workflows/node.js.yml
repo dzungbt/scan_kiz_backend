@@ -59,13 +59,14 @@ jobs:
     - run: npm ci
     - name: Migrate to database
       run: npx sequelize-cli db:migrate --env=production
-    # - run: npm run build --if-present
+    - run: npm run build --if-present
     - run: npm i
     - name: Install pm2
       run: npm install pm2 -g
+    - name: Install nodemon
+      run: npm install -g nodemon
     - name: Stop application if running
       run: npx pm2 delete "kiz-scan-back" || true
-
     - name: Start application with pm2
       run: npx pm2 start npm --name "kiz-scan-back" -- run start
     # - name: Copy example config to config.json
