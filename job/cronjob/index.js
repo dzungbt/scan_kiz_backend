@@ -1,8 +1,8 @@
 import cron from 'node-cron';
 import accountController from '../../controllers/accountController';
 function cronJobs () {
-    cron.schedule('*/5 * * * * *', () => {
-        accountController.updateAccountStatus()
+    cron.schedule('0 */12 * * *', () => {
+        accountController.updateAccountStatus();
     });
 }
 
