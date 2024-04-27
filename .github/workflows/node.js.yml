@@ -56,11 +56,10 @@ jobs:
       run: echo "PORT=3010" >> .env
     - name: Update port .env
       run: echo "JWT_SECRET=${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}" >> .env
-    - run: npm ci
+    - run: npm i
     - name: Migrate to database
       run: npx sequelize-cli db:migrate --env=production
     - run: npm run build --if-present
-    - run: npm i
     - name: Install pm2
       run: npm install pm2 -g
     - name: Install nodemon
