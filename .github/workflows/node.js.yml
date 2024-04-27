@@ -20,6 +20,7 @@ jobs:
     env:
       NODE_ENV: production
       PORT: 3010
+      JWT_SECRET: ${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}
     steps:
     - name: Archive config file
       uses: actions/upload-artifact@v2
@@ -50,11 +51,13 @@ jobs:
       uses: geekyeggo/delete-artifact@v5
       with:
         name: config-file
-        
+
     - name: Create .env file
       run: echo "NODE_ENV=production" > .env
     - name: Update port .env
       run: echo "PORT=3010" >> .env
+    - name: Update port .env
+      run: echo "JWT_SECRET=${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}" >> .env
     - name: Migrate to database
       run: npx sequelize-cli db:migrate --env=production
     # - name: Copy example config to config.json
