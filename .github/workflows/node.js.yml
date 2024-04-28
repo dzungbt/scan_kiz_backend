@@ -34,13 +34,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: 'master'
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
+
     - name: Restore config file
       uses: actions/download-artifact@v2
       with:
@@ -59,6 +53,13 @@ jobs:
       run: echo "JWT_SECRET=${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}" >> .env
     - name: Migrate to database
       run: npx sequelize-cli db:migrate --env=production
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
     # - run: npm run build --if-present
     # - name: Install pm2
     #   run: npm install pm2 -g
