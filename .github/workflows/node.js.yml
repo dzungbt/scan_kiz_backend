@@ -70,7 +70,7 @@ jobs:
     - name: Stop application if running
       run: npx pm2 delete "kiz-scan-back" || true
     - name: Start application with pm2
-      run: npx pm2 start npm --name "kiz-scan-back" -- run start
+      run: npx pm2 start npm --name "kiz-scan-back"
     # - name: Copy example config to config.json
     #   run: cp ./config/.example.config ./config/config.json
 
