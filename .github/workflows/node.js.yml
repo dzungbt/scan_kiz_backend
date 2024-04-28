@@ -64,6 +64,8 @@ jobs:
       run: npm install pm2 -g
     - name: Install nodemon
       run: npm install -g nodemon
+    - name: Set nodemon Path
+      run: npm install --save-dev nodemon
     - name: Install Babel and related dependencies
       run: |
         npm install --save-dev @babel/core @babel/node @babel/preset-env
