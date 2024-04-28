@@ -71,6 +71,7 @@ jobs:
     #     npm install --save-dev @babel/core @babel/node @babel/preset-env
     - name: Stop application if running
       run: npx pm2 delete "kiz-scan-back-dev" || true
+      
     - name: Start application with pm2
       run: npx pm2 start app.js --name "kiz-scan-back-dev"
     # - name: Copy example config to config.json
