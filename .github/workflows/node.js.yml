@@ -51,8 +51,6 @@ jobs:
       run: echo "PORT=3010" >> .env
     - name: Update jwt secret .env
       run: echo "JWT_SECRET=${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}" >> .env
-    - name: Migrate to database
-      run: npx sequelize-cli db:migrate --env=production
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -60,6 +58,8 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
+    - name: Migrate to database
+      run: npx sequelize-cli db:migrate --env=production
     # - run: npm run build --if-present
     # - name: Install pm2
     #   run: npm install pm2 -g
