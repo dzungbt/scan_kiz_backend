@@ -62,7 +62,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 initWebRoutes(app);
 // connectDB();
 
-let port = process.env.PORT || 3005;
+let port = process.env.PORT || 3010;
 app.listen(port, () => {
     // console.log('Limit file size: ' + limit);
     console.log('backend is running : ' + port);

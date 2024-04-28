@@ -55,7 +55,7 @@ jobs:
       run: echo "NODE_ENV=production" > .env
     - name: Update port .env
       run: echo "PORT=3010" >> .env
-    - name: Update port .env
+    - name: Update jwt secret .env
       run: echo "JWT_SECRET=${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}" >> .env
     - name: Migrate to database
       run: npx sequelize-cli db:migrate --env=production
