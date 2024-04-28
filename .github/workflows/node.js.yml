@@ -44,7 +44,6 @@ jobs:
       uses: geekyeggo/delete-artifact@v5
       with:
         name: config-file
-
     - name: Create .env file
       run: echo "NODE_ENV=production" > .env
     - name: Update port .env
@@ -60,10 +59,10 @@ jobs:
     - run: npm run build --if-present
     - name: Migrate to database
       run: npx sequelize-cli db:migrate --env=production
-      
-    # - run: npm run build --if-present
-    # - name: Install pm2
-    #   run: npm install pm2 -g
+
+    - run: npm run build --if-present
+    - name: Install pm2
+      run: npm install pm2 -g
     # - name: Install nodemon
     #   run: npm install -g nodemon
     # - name: Set nodemon Path
@@ -71,10 +70,10 @@ jobs:
     # - name: Install Babel and related dependencies
     #   run: |
     #     npm install --save-dev @babel/core @babel/node @babel/preset-env
-    # - name: Stop application if running
-    #   run: npx pm2 delete "kiz-scan-back" || true
-    # - name: Start application with pm2
-    #   run: npx pm2 start npm --name "kiz-scan-back"
+    - name: Stop application if running
+      run: npx pm2 delete "kiz-scan-back" || true
+    - name: Start application with pm2
+      run: npx pm2 start npm --name "kiz-scan-back"
     # - name: Copy example config to config.json
     #   run: cp ./config/.example.config ./config/config.json
 
