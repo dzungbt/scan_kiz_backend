@@ -1,5 +1,6 @@
 'use strict';
-import * as Constants from '../config/constants/Constants';
+// import * as Constants from '../config/constants/Constants';
+const Constants = require('../config/constants/Constants');
 const {
     Model
 } = require('sequelize');

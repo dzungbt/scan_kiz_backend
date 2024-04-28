@@ -1,7 +1,13 @@
-import db from "../models/index";
-import fs from 'fs';
-import dotenv from "dotenv";
-import * as Constants from '../config/constants/Constants'
+// import db from "../models/index";
+// import fs from 'fs';
+// import dotenv from "dotenv";
+// import * as Constants from '../config/constants/Constants'
+
+const db = require('../models/index');
+const fs = require('fs');
+const dotenv = require('dotenv');
+const Constants = require('../config/constants/Constants');
+
 dotenv.config();
 
 let userLogin = async (data) => {

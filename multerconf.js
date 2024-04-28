@@ -1,5 +1,8 @@
-import multer from 'multer';
-import mime from 'mime';
+// import multer from 'multer';
+// import mime from 'mime';
+
+const multer = require('multer');
+const mime = require('mime');
 
 module.exports.uploads = function (dir) {
     const storage = multer.diskStorage({

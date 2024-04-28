@@ -2,9 +2,14 @@ const {
     Product,
     Product_Categories
 } = require("../models");
-import BlogService from '../services/blogService';
-import AuthMiddleware from '../middleware/auth'
-import validateBlogsData from "../middleware/validateBlogsData";
+// import BlogService from '../services/blogService';
+// import AuthMiddleware from '../middleware/auth'
+// import validateBlogsData from "../middleware/validateBlogsData";
+
+const BlogService = require('../services/blogService');
+const AuthMiddleware = require('../middleware/auth');
+const validateBlogsData = require('../middleware/validateBlogsData');
+
 
 let createNewBlog = async (req, res) => {
     let content = req.body.content;

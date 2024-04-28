@@ -1,10 +1,19 @@
-import AuthService from '../services/authService';
-import AuthMiddleware from '../middleware/auth'
-import validateAuthData from "../middleware/validateAuthData";
-import SendMail from '../utils/mail/sendMail';
-import JWTAction from '../middleware/JWTAction';
-import db from "../models/index";
-import ApiResponse from '../helpers/apiResponse';
+// import AuthService from '../services/authService';
+// import AuthMiddleware from '../middleware/auth'
+// import validateAuthData from "../middleware/validateAuthData";
+// import SendMail from '../utils/mail/sendMail';
+// import JWTAction from '../middleware/JWTAction';
+// import db from "../models/index";
+// import ApiResponse from '../helpers/apiResponse';
+
+const AuthService = require('../services/authService');
+const AuthMiddleware = require('../middleware/auth');
+const validateAuthData = require('../middleware/validateAuthData');
+const db = require('../models/index');
+const ApiResponse = require('../helpers/apiResponse');
+const SendMail = require('../utils/mail/sendMail');
+const JWTAction = require('../middleware/JWTAction');
+
 let userLogin = async (req, res) => {
     let email = req.body.email;
     let password = req.body.password;

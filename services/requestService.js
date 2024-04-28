@@ -1,10 +1,20 @@
-import bcrypt from "bcryptjs";
-import db from "../models/index";
-import sequelize, { Op } from "sequelize";
-import fs from 'fs';
-import dotenv from "dotenv";
-import * as Constants from '../config/constants/Constants';
-import * as functions from '../utils/functions';
+// import bcrypt from "bcryptjs";
+// import db from "../models/index";
+// import sequelize, { Op } from "sequelize";
+// import fs from 'fs';
+// import dotenv from "dotenv";
+// import * as Constants from '../config/constants/Constants';
+// import * as functions from '../utils/functions';
+
+const bcrypt = require('bcrypt');
+const db = require('../models/index');
+const fs = require('fs');
+const dotenv = require('dotenv');
+const sequelize = require('sequelize');
+const Op = sequelize.Op;
+const Constants = require('../config/constants/Constants');
+const functions = require('../utils/functions');
+
 dotenv.config();
 const salt = bcrypt.genSaltSync(10);
 const {

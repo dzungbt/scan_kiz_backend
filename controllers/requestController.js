@@ -1,7 +1,13 @@
-import RequestService from '../services/requestService';
-import AuthMiddleware from '../middleware/auth'
-import validateRequestData from "../middleware/validateRequestData";
-import SendMail from '../utils/mail/sendMail'
+// import RequestService from '../services/requestService';
+// import AuthMiddleware from '../middleware/auth'
+// import validateRequestData from "../middleware/validateRequestData";
+// import SendMail from '../utils/mail/sendMail'
+
+const RequestService = require('../services/requestService');
+const AuthMiddleware = require('../middleware/auth');
+const validateRequestData = require("../middleware/validateRequestData");
+const SendMail = require('../utils/mail/sendMail');
+
 let createNewRequest = async (req, res) => {
     let name = req.body.name;
     let email = req.body.email;

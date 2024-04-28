@@ -1,10 +1,20 @@
-import AuthService from '../services/authService';
-import validateAccountData from "../middleware/validateAccountData";
-import JWTAction from '../middleware/JWTAction';
-import db from "../models/index";
-import ApiResponse from '../helpers/apiResponse';
-import * as Constants from '../config/constants/Constants'
-import sequelize, { Op } from "sequelize";
+// import AuthService from '../services/authService';
+// import validateAccountData from "../middleware/validateAccountData";
+// import JWTAction from '../middleware/JWTAction';
+// import db from "../models/index";
+// import ApiResponse from '../helpers/apiResponse';
+// import * as Constants from '../config/constants/Constants'
+// import sequelize, { Op } from "sequelize";
+
+const AuthService = require('../services/authService');
+const validateAccountData = require('../middleware/validateAccountData');
+const JWTAction = require('../middleware/JWTAction');
+const db = require('../models/index');
+const ApiResponse = require('../helpers/apiResponse');
+const Constants = require('../config/constants/Constants');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+
 const moment = require('moment');
 
 const createAccount = async (req, res) => {

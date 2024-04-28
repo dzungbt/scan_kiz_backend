@@ -1,6 +1,10 @@
-import db from "../models/index";
-import fs from 'fs';
-import dotenv from "dotenv";
+// import db from "../models/index";
+// import fs from 'fs';
+// import dotenv from "dotenv";
+
+const db = require('../models/index');
+const fs = require('fs');
+const dotenv = require('dotenv');
 dotenv.config();
 
 let createBlog = async (data) => {

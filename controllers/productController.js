@@ -2,9 +2,13 @@ const {
     Product,
     Product_Categories
 } = require("../models");
-import ProductService from '../services/productService';
-import AuthMiddleware from '../middleware/auth'
-import validateProductsData from "../middleware/validateProductsData";
+// import ProductService from '../services/productService';
+// import AuthMiddleware from '../middleware/auth'
+// import validateProductsData from "../middleware/validateProductsData";
+
+const ProductService = require('../services/productService');
+const AuthMiddleware = require('../middleware/auth');
+const validateProductsData = require("../middleware/validateProductsData");
 
 let createNewCategory = async (req, res) => {
     let name = req.body.name;

@@ -1,6 +1,6 @@
 require("dotenv").config();
-import jwt from 'jsonwebtoken';
-
+// import jwt from 'jsonwebtoken';
+const jwt = require('jsonwebtoken');
 const createToken = (payload) => {
     let key = process.env.JWT_SECRET;
     let token = null;

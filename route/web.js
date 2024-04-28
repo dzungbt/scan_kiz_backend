@@ -1,5 +1,8 @@
-import express from "express";
-import ApiRoute from './API';
+// import express from "express";
+// import ApiRoute from './API';
+
+const express = require('express');
+const ApiRoute = require('./API');
 
 let router = express.Router();
 

@@ -1,8 +1,15 @@
-import JWTAction from './JWTAction'
-import ApiResponse from '../helpers/apiResponse';
-import db from "../models/index";
-import { Op } from "sequelize";
-import * as Constants from '../config/constants/Constants'
+// import JWTAction from './JWTAction'
+// import ApiResponse from '../helpers/apiResponse';
+// import db from "../models/index";
+// import { Op } from "sequelize";
+// import * as Constants from '../config/constants/Constants'
+
+const JWTAction = require('./JWTAction');
+const ApiResponse = require('../helpers/apiResponse');
+const db = require("../models/index");
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+const Constants = require( '../config/constants/Constants');
 const checkJWTToken = (token) => {
     if (token === undefined) {
         return {

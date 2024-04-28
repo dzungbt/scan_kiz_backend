@@ -1,9 +1,11 @@
 const {
     File,
 } = require("../models");
-import FileService from '../services/fileService';
-import ValidateFileData from "../middleware/validateFileData";
+// import FileService from '../services/fileService';
+// import ValidateFileData from "../middleware/validateFileData";
 
+const FileService = require( '../services/fileService');
+const ValidateFileData = require("../middleware/validateFileData");
 let createFile = async (req, res) => {
     let products = req.body.products;
     const errors = ValidateFileData.productsImportValidate(products).error;

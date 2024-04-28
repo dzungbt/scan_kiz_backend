@@ -1,21 +1,21 @@
-// const express = require("express");
-// const bodyParser = require("body-parser");
-// const viewEngine = require("./config/viewEngine");
-// const initWebRoutes = require("./route/web");
-// const dotenv = require("dotenv");
-// const cronJobs = require("./job/cronjob");
-// const cors = require("cors");
-// const nodemailer = require("nodemailer");
+const express = require("express");
+const bodyParser = require("body-parser");
+const viewEngine = require("./config/viewEngine");
+const initWebRoutes = require("./route/web");
+const dotenv = require("dotenv");
+const cronJobs = require("./job/cronjob");
+const cors = require("cors");
+const nodemailer = require("nodemailer");
 
 
-import express from "express";
-import bodyParser from "body-parser";
-import viewEngine from "./config/viewEngine";
-import initWebRoutes from "./route/web";
-import dotenv from "dotenv";
-import cronJobs from './job/cronjob'
-import cors from 'cors';
-import nodemailer from 'nodemailer';
+// import express from "express";
+// import bodyParser from "body-parser";
+// import viewEngine from "./config/viewEngine";
+// import initWebRoutes from "./route/web";
+// import dotenv from "dotenv";
+// import cronJobs from './job/cronjob'
+// import cors from 'cors';
+// import nodemailer from 'nodemailer';
 
 const db = require("./models");
 // const cors = require('cors');
@@ -58,7 +58,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 // app.use(expressValidator());
 
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
-viewEngine(app);
+// viewEngine(app);
 initWebRoutes(app);
 // connectDB();
 

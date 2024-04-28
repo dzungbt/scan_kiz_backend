@@ -1,6 +1,8 @@
-import Transporter from './setup';
-import dotenv from "dotenv";
+// import Transporter from './setup';
+// import dotenv from "dotenv";
 
+const Transporter = require('./setup');
+const dotenv = require('dotenv');
 const requestConfirm = (userData) => {
   let mailData = {
     from: process.env.EMAIL_USER,  // sender address
