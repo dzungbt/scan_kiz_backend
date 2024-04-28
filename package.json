@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "nodemon --exec babel-node app.js",
-    "start-old": "npm i && node app.js",
-    "start": "npm i && nodemon app.js",
+    "start": "npm i && node app.js",
+    "start-old": "npm i && nodemon app.js",
     "dev": "nodemon --exec babel-node app.js"
   },
   "author": "dung",
