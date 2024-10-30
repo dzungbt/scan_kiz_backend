@@ -1,11 +1,7 @@
 #!/bin/bash
 
 processes=(
-  "viettv_proxy_v4"
-  "viettv_proxy_v4_3030"
-  "viettv_proxy_v4_3040"
-  "viettv_proxy_v4_3050"
-  "viettv_proxy_v4_3060"
+  "scan_kiz_backend"
 )
 
 for process in "${processes[@]}"

@@ -19,10 +19,9 @@ jobs:
     env:
       NODE_ENV: production
       JWT_SECRET: ${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}
-      MAIN_URL: ${{secrets.MAIN_URL}}
+      MAIN_URL: ${{secrets.KIZ_SCAN_BACKEND_MAIN_URL}}
     steps:
     - name: Copy config file to temp folder
-      # run: cp /www/wwwroot/scan_kiz_be/config/config.json ~/www/wwwroot/runners/scan_kiz_be/scan_kiz_backend/scan_kiz_backend/config/config.json
       run: cp /www/wwwroot/runners/scan_kiz_be/scan_kiz_backend/scan_kiz_backend/config/config.json /project/temp/scan_kiz_back/config.json
     # - name: Archive config file
     #   uses: actions/upload-artifact@v2
@@ -53,7 +52,7 @@ jobs:
     - name: Update jwt secret .env
       run: echo "JWT_SECRET=${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}" >> .env
     - name: Update main_url .env
-      run: echo "MAIN_URL=${{secrets.MAIN_URL}}" >> .env
+      run: echo "MAIN_URL=${{secrets.KIZ_SCAN_BACKEND_MAIN_URL}}" >> .env
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -66,23 +65,4 @@ jobs:
       run: npx sequelize-cli db:migrate --env=production
     - name: Run reexecute.sh
       run: bash .github/workflows/reexecute.sh
-
-    # - run: npm run build --if-present
-    # - name: Install pm2
-    #   run: npm install pm2 -g
-
-    # - name: Install nodemon
-    #   run: npm install -g nodemon
-    # - name: Set nodemon Path
-    #   run: npm install --save-dev nodemon
-    # - name: Install Babel and related dependencies
-    #   run: |
-    #     npm install --save-dev @babel/core @babel/node @babel/preset-env
-  
-    # - name: Stop application if running
-    #   run: npx pm2 delete "kiz-scan-back" || true
-    # - name: Start application with pm2
-    #   run: npx pm2 start app.js --name "kiz-scan-back"
-    # - name: Copy example config to config.json
-    #   run: cp ./config/.example.config ./config/config.json
 
