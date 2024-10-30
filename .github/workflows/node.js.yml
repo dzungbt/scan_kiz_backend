@@ -21,8 +21,8 @@ jobs:
       JWT_SECRET: ${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}
       MAIN_URL: ${{secrets.MAIN_URL}}
     steps:
-    # - name: Copy config file to temp folder
-    #   run: cp /www/wwwroot/scan_kiz_be/config/config.json ~/project/temp/scan_kiz_back/config.json
+    - name: Copy config file to temp folder
+      run: cp /www/wwwroot/scan_kiz_be/config/config.json ~/www/wwwroot/runners/scan_kiz_be/scan_kiz_backend/scan_kiz_backend/config/config.json
     # - name: Archive config file
     #   uses: actions/upload-artifact@v2
     #   with:
@@ -36,8 +36,8 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: 'master'
-    # - name: Restore config file from temp folder
-    #   run: cp ~/project/temp/scan_kiz_back/config.json /www/wwwroot/scan_kiz_be/config/config.json
+    - name: Restore config file from temp folder
+      run: cp ~/www/wwwroot/runners/scan_kiz_be/scan_kiz_backend/scan_kiz_backend/config/config.json /www/wwwroot/scan_kiz_be/config/config.json
     # - name: Restore config file
     #   uses: actions/download-artifact@v2
     #   with:
@@ -59,10 +59,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+    - run: npm i --init-module
     - run: npm run build --if-present
     - name: Migrate to database
       run: npx sequelize-cli db:migrate --env=production
-    - run: npm i --init-module
     - name: Run reexecute.sh
       run: bash .github/workflows/reexecute.sh
 
