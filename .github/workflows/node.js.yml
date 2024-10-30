@@ -21,7 +21,7 @@ jobs:
       JWT_SECRET: ${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}
       MAIN_URL: ${{secrets.MAIN_URL}}
     steps:
-        - name: Copy config file to temp folder
+      - name: Copy config file to temp folder
       run: cp /www/wwwroot/scan_kiz_be/config/config.json ~/project/temp/scan_kiz_back/config.json
     # - name: Archive config file
     #   uses: actions/upload-artifact@v2
