@@ -21,8 +21,8 @@ jobs:
       JWT_SECRET: ${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}
       MAIN_URL: ${{secrets.MAIN_URL}}
     steps:
-      - name: Copy config file to temp folder
-        run: cp /www/wwwroot/scan_kiz_be/config/config.json ~/project/temp/scan_kiz_back/config.json
+    - name: Copy config file to temp folder
+      run: cp /www/wwwroot/scan_kiz_be/config/config.json ~/project/temp/scan_kiz_back/config.json
     # - name: Archive config file
     #   uses: actions/upload-artifact@v2
     #   with:
@@ -33,38 +33,38 @@ jobs:
 
     # - name: Copy config file to server
     #   run: scp config/config.json root@45.77.67.220:/www/wwwroot/cicd/temp/
-      - uses: actions/checkout@v3
-        with:
-          ref: 'master'
-      - name: Restore config file from temp folder
-        run: cp ~/project/temp/scan_kiz_back/config.json /www/wwwroot/scan_kiz_be/config/config.json
+    - uses: actions/checkout@v3
+      with:
+        ref: 'master'
+    - name: Restore config file from temp folder
+      run: cp ~/project/temp/scan_kiz_back/config.json /www/wwwroot/scan_kiz_be/config/config.json
     # - name: Restore config file
     #   uses: actions/download-artifact@v2
     #   with:
     #     name: config-file
     #     path: config
-      - name: Delete artifact config file
-        uses: geekyeggo/delete-artifact@v5
-        with:
-          name: config-file
-      - name: Create .env file
-        run: echo "NODE_ENV=production" > .env
-      - name: Update jwt secret .env
-        run: echo "JWT_SECRET=${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}" >> .env
-        - name: Update main_url .env
-        run: echo "MAIN_URL=${{secrets.MAIN_URL}}" >> .env
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run build --if-present
-      - name: Migrate to database
-        run: npx sequelize-cli db:migrate --env=production
-      - run: npm i --init-module
-      - name: Run reexecute.sh
-        run: bash .github/workflows/reexecute.sh
+    - name: Delete artifact config file
+      uses: geekyeggo/delete-artifact@v5
+      with:
+        name: config-file
+    - name: Create .env file
+      run: echo "NODE_ENV=production" > .env
+    - name: Update jwt secret .env
+      run: echo "JWT_SECRET=${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}" >> .env
+    - name: Update main_url .env
+      run: echo "MAIN_URL=${{secrets.MAIN_URL}}" >> .env
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+    - name: Migrate to database
+      run: npx sequelize-cli db:migrate --env=production
+    - run: npm i --init-module
+    - name: Run reexecute.sh
+      run: bash .github/workflows/reexecute.sh
 
     # - run: npm run build --if-present
     # - name: Install pm2
