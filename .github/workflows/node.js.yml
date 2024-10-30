@@ -23,30 +23,11 @@ jobs:
     steps:
     - name: Copy config file to temp folder
       run: cp /www/wwwroot/runners/scan_kiz_be/scan_kiz_backend/scan_kiz_backend/config/config.json /project/temp/scan_kiz_back/config.json
-    # - name: Archive config file
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: config-file
-    #     path: config/config.json
-    # - name: Copy production folder to server
-    #   run: scp -r public/uploads/ root@45.77.67.220:/www/wwwroot/cicd/temp/
-
-    # - name: Copy config file to server
-    #   run: scp config/config.json root@45.77.67.220:/www/wwwroot/cicd/temp/
     - uses: actions/checkout@v3
       with:
         ref: 'master'
     - name: Restore config file from temp folder
       run: cp /project/temp/scan_kiz_back/config.json /www/wwwroot/runners/scan_kiz_be/scan_kiz_backend/scan_kiz_backend/config/config.json
-    # - name: Restore config file
-    #   uses: actions/download-artifact@v2
-    #   with:
-    #     name: config-file
-    #     path: config
-    # - name: Delete artifact config file
-    #   uses: geekyeggo/delete-artifact@v5
-    #   with:
-    #     name: config-file
     - name: Create .env file
       run: echo "NODE_ENV=production" > .env
     - name: Update jwt secret .env
