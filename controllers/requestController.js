@@ -13,10 +13,10 @@ let createNewRequest = async (req, res) => {
     let email = req.body.email;
     let des = req.body.des;
     let listFiles = req.files;
-    console.log('controller check files : ', req.body);
+    // console.log('controller check files : ', req.body);
 
     const errors = validateRequestData.createRequestValidate(req.body).error;
-    console.log(errors);
+    // console.log(errors);
     if (errors) {
         return res.status(500).json({
             errCode: 1,
@@ -32,7 +32,7 @@ let createNewRequest = async (req, res) => {
         listFiles: listFiles,
     })
 
-    console.log('request check : ', data.request.name);
+    // console.log('request check : ', data.request.name);
     SendMail.requestConfirm({
         email: data.request.email,
         name: data.request.name,

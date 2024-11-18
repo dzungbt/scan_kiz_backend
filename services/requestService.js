@@ -29,7 +29,7 @@ let createRequest = async (data) => {
         try {
             let dataResponse = {};
             let filesSaving = [];
-            console.log('=====> list files : ', data.listFiles);
+            // console.log('=====> list files : ', data.listFiles);
             const userExisted = await db.user.findOne({
                 where: { email: data.email }
             });

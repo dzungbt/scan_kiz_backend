@@ -13,6 +13,7 @@ const requestRoutes = require('./request');
 const blogRoute = require('./blog');
 const authRoutes = require('./auth');
 const fileRoutes = require('./file');
+const ocr = require('./ocr');
 const accountRoutes = require('./account');
 const auth = require('../../middleware/auth');
 
@@ -26,5 +27,6 @@ router.use("/blog", blogRoute);
 router.use("/auth", authRoutes);
 router.use("/file", auth.checkAuthAccess, fileRoutes);
 router.use("/account", auth.checkAuthAccess, accountRoutes);
+router.use("/ocr", auth.checkAuthAccess, ocr);
 
 module.exports = router;
