@@ -58,30 +58,25 @@ app.use(bodyParser.json({ limit: '50mb' }));
 // app.use(expressValidator());
 
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
-// viewEngine(app);
 initWebRoutes(app);
-// connectDB();
+
+const args = process.argv;
 
 const port = getValueByKey(args, 'sysport') || process.env.PORT || 3010
 
 app.listen(port, () => {
     console.log('backend is running : ' + port);
 })
-app.listen(port, () => {
-    // console.log('Limit file size: ' + limit);
-    console.log('backend is running : ' + port);
-})
-
 
 function getValueByKey(arr, key) {
-  const regex = new RegExp(`^${key}=(.*)$`);
-  
-  for (let i = 0; i < arr.length; i++) {
-    const match = arr[i].match(regex);
-    if (match) {
-      return match[1];
+    const regex = new RegExp(`^${key}=(.*)$`);
+    
+    for (let i = 0; i < arr.length; i++) {
+      const match = arr[i].match(regex);
+      if (match) {
+        return match[1];
+      }
     }
-  }
-  
-  return null;
+    
+    return null;
 }
