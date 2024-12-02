@@ -24,9 +24,20 @@ const db = require("./models");
 dotenv.config();// required for running process.env.PORT
 let app = express();
 
+const allowedOrigins = ['dev.kiz-scan.ru', 'kiz-scan.ru', 'www.kiz-scan.ru'];
 app.use(cors({
-    origin: true,
-    credentials: true
+  origin: function(origin, callback){
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    if (allowedOrigins.includes(origin)) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+
 }));
 
 app.use('/product-images', express.static('uploads/products'));
