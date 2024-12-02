@@ -35,7 +35,7 @@ jobs:
     - name: Update jwt secret .env
       run: echo "JWT_SECRET=${{secrets.KIZ_SCAN_BACKEND_JWT_SECRET}}" >> .env
     - name: Update main_url .env
-      run: echo "MAIN_URL=${{secrets.KIZ_SCAN_BACKEND_MAIN_URL}}" >> .env
+      run: echo "MAIN_URL=${{secrets.KIZ_SCAN_BACKEND_MAIN_URL_DEV}}" >> .env
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
