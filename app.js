@@ -72,3 +72,16 @@ app.listen(port, () => {
     console.log('backend is running : ' + port);
 })
 
+
+function getValueByKey(arr, key) {
+  const regex = new RegExp(`^${key}=(.*)$`);
+  
+  for (let i = 0; i < arr.length; i++) {
+    const match = arr[i].match(regex);
+    if (match) {
+      return match[1];
+    }
+  }
+  
+  return null;
+}
