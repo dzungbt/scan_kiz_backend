@@ -49,7 +49,7 @@ let createProductCategory = async (data) => {
 let updateProductCategory = async (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            console.log(data);
+            // console.log(data);
 
             let dataResponse = {};
             if (data.pid == data.id) {
@@ -311,8 +311,8 @@ let getProductsPagination = async (data) => {
             let limit = process.env.PRODUCT_USER_PAGINATION_OFFSET;
             let offset = process.env.PRODUCT_USER_PAGINATION_OFFSET * (data.page - 1);
 
-            console.log('==>Limit : ', limit);
-            console.log('==>categoryId : ', data.categoryId);
+            // console.log('==>Limit : ', limit);
+            // console.log('==>categoryId : ', data.categoryId);
             let categoryId = JSON.parse(data.categoryId);
             let dataResponse = {};
             let options = {
@@ -334,7 +334,7 @@ let getProductsPagination = async (data) => {
             }
 
             let productPagination = await db.Product.findAndCountAll(options);
-            console.log('options :', productPagination);
+            // console.log('options :', productPagination);
 
             if (productPagination) {
                 dataResponse.errCode = 0;

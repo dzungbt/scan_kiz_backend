@@ -14,7 +14,7 @@ let createFileAndGetInsertedId = async (data) => {
             let newFile = await db.File.create({
                 data: data.products,
             });
-            console.log('file data : ', newFile)
+            // console.log('file data : ', newFile)
             if (newFile) {
                 dataResponse.errCode = 0;
                 dataResponse.newFileId = newFile.id;
@@ -34,7 +34,7 @@ let createFileAndGetInsertedId = async (data) => {
 
 let getFileById = async (data) => {
     return new Promise(async (resolve, reject) => {
-        console.log('get file by id : ', data.fileId)
+        // console.log('get file by id : ', data.fileId)
         try {
             let dataResponse = {};
 
@@ -45,7 +45,7 @@ let getFileById = async (data) => {
                 resolve(dataResponse);
             } 
             let file = await db.File.findOne({ where: { id: Number(fileId) } });
-            console.log('get file : ', file);
+            // console.log('get file : ', file);
             if (file) {
                 dataResponse.errCode = 0;
                 dataResponse.file = file;
@@ -64,7 +64,7 @@ let getFileById = async (data) => {
 
 
 let updateFile = (data) => {
-    console.log('===> file update file : ', data)
+    // console.log('===> file update file : ', data)
     return new Promise(async (resolve, reject) => {
         try {
             let dataResponse = {};
@@ -86,7 +86,7 @@ let updateFile = (data) => {
             }, { where: { id: Number(fileId) } });
             if (updateFile[0] == 1) {
                 updateFile = await db.File.findOne({ where: { id: Number(fileId) } });
-                console.log('file updated : ', updateFile)
+                // console.log('file updated : ', updateFile)
                 dataResponse.errCode = 0;
                 dataResponse.file = updateFile;
                 dataResponse.message = 'Get complete';

@@ -71,7 +71,7 @@ let updateBlog = async (req, res) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
     const errors = validateBlogsData.updateBlogValidate(req.body).error;
-    console.log('error : ', errors);
+    // console.log('error : ', errors);
     if (errors) {
         return res.status(500).json({
             errCode: 1,
